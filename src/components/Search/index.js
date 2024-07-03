@@ -24,10 +24,27 @@ const Subtitulo = styled.h3`
         margin-bottom: 40px;
 `
 
+const Resultado = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    p {
+        width: 200px;
+    }
+    img {
+        width: 100px;
+    }
+    &:hover {
+        border: 1px solid white;
+    }
+`
+
+
 function Search() {
     const [livrosPesquisados, setlivrosPesquisados] = useState([])
-    console.log(livrosPesquisados)
-
+    
     return(
         <PesquisaContainer>
            <Titulo>Já sabe por onde começar?</Titulo>
@@ -39,7 +56,14 @@ function Search() {
                 const resultadoPesquisa = livros.filter( livro => livro.nome.includes(textoDigitado))
                 setlivrosPesquisados(resultadoPesquisa)
            }}
-           />
+           />         
+           {livrosPesquisados.map(livro => (
+                <Resultado>
+                 <p>{livro.nome}</p>
+                 <img src={livro.src}/>
+                </Resultado>          
+           ) ) }
+           
         </PesquisaContainer>
     )
 }
