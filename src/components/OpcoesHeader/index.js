@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Opcao = styled.li`
   font-size: 16px;
@@ -16,15 +17,14 @@ const Opcoes = styled.ul`
     display: flex;
 `
 
-const textoOpcoes = ['CATEGORIAS', 'FAVORITOS', 'MINHA ESTANTE']
+const textoOpcoes = ['CATEGORIAS', 'FAVORITOS', 'ESTANTE']
 
 function OpcoesHeader() {
-    
     return(
         <Opcoes>
           {/* Varrer a lista de arrays */}
           {textoOpcoes.map((text) => (
-            <Opcao><p>{text}</p></Opcao>
+            <Link to={`/${text.toLowerCase()}`}><Opcao><p>{text}</p></Opcao></Link>
           ))}      
         </Opcoes>
     )
